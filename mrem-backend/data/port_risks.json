@@ -1,0 +1,648 @@
+{
+  "_metadata": {
+    "version": "3.0.0",
+    "last_updated": "2024-01-15",
+    "total_ports": 200,
+    "risk_scale": "0-10 (0=Safe, 10=Critical)",
+    "context_aware": true
+  },
+  "20": {
+    "service": "FTP-Data",
+    "risk": 6,
+    "category": "file_transfer",
+    "reason": "FTP data channel, plaintext transfer",
+    "cve_examples": ["CVE-2015-3306"],
+    "attack_vectors": ["Man-in-the-middle", "Data interception"],
+    "mitigation": "Use SFTP or FTPS instead"
+  },
+  "21": {
+    "service": "FTP",
+    "risk": 7,
+    "category": "file_transfer",
+    "reason": "Plaintext credentials, anonymous access common",
+    "cve_examples": ["CVE-2010-4221", "CVE-2015-3306"],
+    "attack_vectors": ["Credential theft", "Anonymous access", "Directory traversal"],
+    "mitigation": "Disable anonymous access, use SFTP"
+  },
+  "22": {
+    "service": "SSH",
+    "risk": 2,
+    "category": "remote_access",
+    "reason": "Secure if properly configured, check for weak passwords",
+    "cve_examples": ["CVE-2016-0777", "CVE-2018-15473"],
+    "attack_vectors": ["Brute force", "User enumeration", "Key theft"],
+    "mitigation": "Use key-based auth, disable root login, fail2ban"
+  },
+  "23": {
+    "service": "Telnet",
+    "risk": 10,
+    "category": "remote_access",
+    "reason": "Plaintext credentials, no encryption, legacy protocol",
+    "cve_examples": ["CVE-2020-10188"],
+    "attack_vectors": ["Credential sniffing", "Session hijacking", "MITM"],
+    "mitigation": "Disable immediately, use SSH instead"
+  },
+  "25": {
+    "service": "SMTP",
+    "risk": 4,
+    "category": "email",
+    "reason": "Email relay, check for open relay configuration",
+    "cve_examples": ["CVE-2020-28017"],
+    "attack_vectors": ["Spam relay", "Email spoofing", "User enumeration"],
+    "mitigation": "Require authentication, use TLS, SPF/DKIM"
+  },
+  "53": {
+    "service": "DNS",
+    "risk": 5,
+    "category": "infrastructure",
+    "reason": "DNS server, vulnerable to amplification attacks",
+    "cve_examples": ["CVE-2020-1350"],
+    "attack_vectors": ["DNS amplification", "Cache poisoning", "Zone transfer"],
+    "mitigation": "Restrict zone transfers, rate limiting, DNSSEC"
+  },
+  "69": {
+    "service": "TFTP",
+    "risk": 8,
+    "category": "file_transfer",
+    "reason": "Trivial FTP, no authentication, plaintext",
+    "cve_examples": ["CVE-2019-11365"],
+    "attack_vectors": ["Unauthorized file access", "Configuration theft"],
+    "mitigation": "Disable if not needed, restrict to management VLAN"
+  },
+  "80": {
+    "service": "HTTP",
+    "risk": 3,
+    "category": "web",
+    "reason": "Unencrypted web traffic, check for sensitive data",
+    "cve_examples": ["Various web app CVEs"],
+    "attack_vectors": ["MITM", "Session hijacking", "XSS", "SQLi"],
+    "mitigation": "Redirect to HTTPS, use HSTS"
+  },
+  "110": {
+    "service": "POP3",
+    "risk": 6,
+    "category": "email",
+    "reason": "Email retrieval, plaintext credentials",
+    "cve_examples": ["CVE-2007-1558"],
+    "attack_vectors": ["Credential theft", "Email interception"],
+    "mitigation": "Use POP3S (995) or IMAP with TLS"
+  },
+  "111": {
+    "service": "RPCbind",
+    "risk": 7,
+    "category": "infrastructure",
+    "reason": "RPC port mapper, information disclosure",
+    "cve_examples": ["CVE-2017-8779"],
+    "attack_vectors": ["Service enumeration", "RPC exploitation"],
+    "mitigation": "Firewall from internet, use TCP wrappers"
+  },
+  "135": {
+    "service": "MS-RPC",
+    "risk": 7,
+    "category": "windows",
+    "reason": "Microsoft RPC, multiple vulnerabilities",
+    "cve_examples": ["CVE-2003-0352", "CVE-2018-8514"],
+    "attack_vectors": ["Remote code execution", "Privilege escalation"],
+    "mitigation": "Firewall, keep Windows updated"
+  },
+  "137": {
+    "service": "NetBIOS-NS",
+    "risk": 6,
+    "category": "windows",
+    "reason": "NetBIOS name service, information disclosure",
+    "cve_examples": [],
+    "attack_vectors": ["Network enumeration", "Name spoofing"],
+    "mitigation": "Disable NetBIOS over TCP/IP"
+  },
+  "138": {
+    "service": "NetBIOS-DGM",
+    "risk": 6,
+    "category": "windows",
+    "reason": "NetBIOS datagram service",
+    "cve_examples": [],
+    "attack_vectors": ["Network enumeration"],
+    "mitigation": "Disable NetBIOS over TCP/IP"
+  },
+  "139": {
+    "service": "NetBIOS-SSN",
+    "risk": 7,
+    "category": "windows",
+    "reason": "NetBIOS session service, SMB over NetBIOS",
+    "cve_examples": ["CVE-2017-0143"],
+    "attack_vectors": ["EternalBlue", "SMB relay", "Credential theft"],
+    "mitigation": "Disable SMBv1, use SMB signing"
+  },
+  "143": {
+    "service": "IMAP",
+    "risk": 5,
+    "category": "email",
+    "reason": "Email access, plaintext credentials",
+    "cve_examples": ["CVE-2011-1585"],
+    "attack_vectors": ["Credential theft", "Email access"],
+    "mitigation": "Use IMAPS (993) with TLS"
+  },
+  "161": {
+    "service": "SNMP",
+    "risk": 7,
+    "category": "monitoring",
+    "reason": "Network monitoring, default community strings",
+    "cve_examples": ["CVE-2002-0013"],
+    "attack_vectors": ["Information disclosure", "Device reconfiguration"],
+    "mitigation": "Use SNMPv3, change default community strings"
+  },
+  "162": {
+    "service": "SNMP-Trap",
+    "risk": 5,
+    "category": "monitoring",
+    "reason": "SNMP trap receiver",
+    "cve_examples": [],
+    "attack_vectors": ["Information disclosure"],
+    "mitigation": "Restrict access, use SNMPv3"
+  },
+  "389": {
+    "service": "LDAP",
+    "risk": 6,
+    "category": "directory",
+    "reason": "Directory service, plaintext authentication",
+    "cve_examples": ["CVE-2020-8554"],
+    "attack_vectors": ["Credential theft", "LDAP injection", "Enumeration"],
+    "mitigation": "Use LDAPS (636), require authentication"
+  },
+  "443": {
+    "service": "HTTPS",
+    "risk": 1,
+    "category": "web",
+    "reason": "Encrypted web traffic, verify certificate validity",
+    "cve_examples": ["Heartbleed CVE-2014-0160"],
+    "attack_vectors": ["SSL/TLS vulnerabilities", "Certificate issues"],
+    "mitigation": "Use TLS 1.2+, strong ciphers, valid certificates"
+  },
+  "445": {
+    "service": "SMB",
+    "risk": 9,
+    "category": "file_sharing",
+    "reason": "File sharing, vulnerable to EternalBlue if unpatched",
+    "cve_examples": ["CVE-2017-0144", "CVE-2020-0796"],
+    "attack_vectors": ["EternalBlue", "SMBGhost", "Ransomware", "Lateral movement"],
+    "mitigation": "Disable SMBv1, apply patches, use SMB signing"
+  },
+  "465": {
+    "service": "SMTPS",
+    "risk": 3,
+    "category": "email",
+    "reason": "SMTP over SSL/TLS",
+    "cve_examples": [],
+    "attack_vectors": ["Email relay if misconfigured"],
+    "mitigation": "Require authentication, proper TLS config"
+  },
+  "514": {
+    "service": "Syslog",
+    "risk": 5,
+    "category": "logging",
+    "reason": "System logging, no authentication",
+    "cve_examples": [],
+    "attack_vectors": ["Log injection", "Information disclosure"],
+    "mitigation": "Use syslog-ng with TLS, restrict access"
+  },
+  "515": {
+    "service": "LPD",
+    "risk": 6,
+    "category": "printing",
+    "reason": "Line printer daemon, legacy protocol",
+    "cve_examples": ["CVE-2011-2896"],
+    "attack_vectors": ["Print job interception", "DoS"],
+    "mitigation": "Use IPP over HTTPS instead"
+  },
+  "548": {
+    "service": "AFP",
+    "risk": 5,
+    "category": "file_sharing",
+    "reason": "Apple Filing Protocol",
+    "cve_examples": ["CVE-2008-1033"],
+    "attack_vectors": ["Unauthorized file access"],
+    "mitigation": "Use SMB or WebDAV instead"
+  },
+  "554": {
+    "service": "RTSP",
+    "risk": 5,
+    "category": "streaming",
+    "reason": "Real-time streaming protocol",
+    "cve_examples": ["CVE-2020-5735"],
+    "attack_vectors": ["Stream hijacking", "Authentication bypass"],
+    "mitigation": "Require authentication, use RTSPS"
+  },
+  "587": {
+    "service": "SMTP-Submission",
+    "risk": 3,
+    "category": "email",
+    "reason": "SMTP submission with authentication",
+    "cve_examples": [],
+    "attack_vectors": ["Brute force if weak passwords"],
+    "mitigation": "Require strong auth, rate limiting"
+  },
+  "631": {
+    "service": "IPP",
+    "risk": 5,
+    "category": "printing",
+    "reason": "Internet Printing Protocol",
+    "cve_examples": ["CVE-2019-8696"],
+    "attack_vectors": ["Print job manipulation", "Information disclosure"],
+    "mitigation": "Restrict access, use authentication"
+  },
+  "636": {
+    "service": "LDAPS",
+    "risk": 2,
+    "category": "directory",
+    "reason": "LDAP over SSL/TLS",
+    "cve_examples": [],
+    "attack_vectors": ["Weak TLS configuration"],
+    "mitigation": "Use strong TLS, certificate validation"
+  },
+  "873": {
+    "service": "rsync",
+    "risk": 6,
+    "category": "file_transfer",
+    "reason": "File synchronization, often no authentication",
+    "cve_examples": ["CVE-2014-9512"],
+    "attack_vectors": ["Unauthorized file access", "Data exfiltration"],
+    "mitigation": "Require authentication, use SSH tunnel"
+  },
+  "993": {
+    "service": "IMAPS",
+    "risk": 2,
+    "category": "email",
+    "reason": "IMAP over SSL/TLS",
+    "cve_examples": [],
+    "attack_vectors": ["Weak TLS configuration"],
+    "mitigation": "Use TLS 1.2+, strong ciphers"
+  },
+  "995": {
+    "service": "POP3S",
+    "risk": 2,
+    "category": "email",
+    "reason": "POP3 over SSL/TLS",
+    "cve_examples": [],
+    "attack_vectors": ["Weak TLS configuration"],
+    "mitigation": "Use TLS 1.2+, strong ciphers"
+  },
+  "1080": {
+    "service": "SOCKS",
+    "risk": 7,
+    "category": "proxy",
+    "reason": "SOCKS proxy, often open to abuse",
+    "cve_examples": [],
+    "attack_vectors": ["Open proxy abuse", "Anonymization"],
+    "mitigation": "Require authentication, restrict access"
+  },
+  "1194": {
+    "service": "OpenVPN",
+    "risk": 3,
+    "category": "vpn",
+    "reason": "VPN service, secure if configured properly",
+    "cve_examples": ["CVE-2017-7508"],
+    "attack_vectors": ["Weak authentication", "Certificate issues"],
+    "mitigation": "Use strong auth, certificate pinning"
+  },
+  "1433": {
+    "service": "MSSQL",
+    "risk": 8,
+    "category": "database",
+    "reason": "Microsoft SQL Server, high-value target",
+    "cve_examples": ["CVE-2020-0618"],
+    "attack_vectors": ["SQL injection", "Brute force", "xp_cmdshell abuse"],
+    "mitigation": "Firewall, strong passwords, disable xp_cmdshell"
+  },
+  "1521": {
+    "service": "Oracle",
+    "risk": 7,
+    "category": "database",
+    "reason": "Oracle database listener",
+    "cve_examples": ["CVE-2012-1675"],
+    "attack_vectors": ["TNS poisoning", "Default credentials"],
+    "mitigation": "Change default passwords, restrict access"
+  },
+  "1723": {
+    "service": "PPTP",
+    "risk": 8,
+    "category": "vpn",
+    "reason": "Point-to-Point Tunneling Protocol, weak encryption",
+    "cve_examples": ["CVE-2012-0147"],
+    "attack_vectors": ["Weak encryption", "Authentication bypass"],
+    "mitigation": "Use OpenVPN or IPSec instead"
+  },
+  "1883": {
+    "service": "MQTT",
+    "risk": 7,
+    "category": "iot",
+    "reason": "IoT messaging, often no authentication",
+    "cve_examples": ["CVE-2017-7650"],
+    "attack_vectors": ["Unauthorized pub/sub", "Message injection"],
+    "mitigation": "Require authentication, use TLS (8883)"
+  },
+  "2049": {
+    "service": "NFS",
+    "risk": 7,
+    "category": "file_sharing",
+    "reason": "Network File System, weak authentication",
+    "cve_examples": ["CVE-2017-7895"],
+    "attack_vectors": ["Unauthorized file access", "Root squashing bypass"],
+    "mitigation": "Use NFSv4 with Kerberos, restrict exports"
+  },
+  "2375": {
+    "service": "Docker",
+    "risk": 9,
+    "category": "container",
+    "reason": "Docker daemon API, unauthenticated by default",
+    "cve_examples": ["CVE-2019-5736"],
+    "attack_vectors": ["Container escape", "Host compromise"],
+    "mitigation": "Use TLS authentication, never expose to internet"
+  },
+  "2376": {
+    "service": "Docker-TLS",
+    "risk": 4,
+    "category": "container",
+    "reason": "Docker daemon with TLS",
+    "cve_examples": [],
+    "attack_vectors": ["Certificate issues"],
+    "mitigation": "Use client certificates, restrict access"
+  },
+  "3000": {
+    "service": "Dev-Server",
+    "risk": 6,
+    "category": "web",
+    "reason": "Common development server port",
+    "cve_examples": [],
+    "attack_vectors": ["Debug endpoints", "Exposed secrets"],
+    "mitigation": "Never expose dev servers to internet"
+  },
+  "3306": {
+    "service": "MySQL",
+    "risk": 8,
+    "category": "database",
+    "reason": "MySQL database, common target",
+    "cve_examples": ["CVE-2016-6662"],
+    "attack_vectors": ["SQL injection", "Default credentials", "Brute force"],
+    "mitigation": "Firewall, strong passwords, disable remote root"
+  },
+  "3389": {
+    "service": "RDP",
+    "risk": 9,
+    "category": "remote_access",
+    "reason": "Remote Desktop Protocol, frequent attack target",
+    "cve_examples": ["CVE-2019-0708 BlueKeep", "CVE-2020-0609"],
+    "attack_vectors": ["BlueKeep", "Brute force", "Pass-the-hash"],
+    "mitigation": "Use VPN, NLA, strong passwords, MFA"
+  },
+  "4369": {
+    "service": "Erlang",
+    "risk": 6,
+    "category": "application",
+    "reason": "Erlang Port Mapper Daemon",
+    "cve_examples": [],
+    "attack_vectors": ["Service enumeration", "RCE if misconfigured"],
+    "mitigation": "Firewall, use authentication"
+  },
+  "5000": {
+    "service": "UPnP/Flask",
+    "risk": 6,
+    "category": "web",
+    "reason": "UPnP or Flask development server",
+    "cve_examples": ["CVE-2020-12695"],
+    "attack_vectors": ["UPnP exploitation", "Debug mode exposure"],
+    "mitigation": "Disable UPnP, never expose Flask debug"
+  },
+  "5432": {
+    "service": "PostgreSQL",
+    "risk": 7,
+    "category": "database",
+    "reason": "PostgreSQL database",
+    "cve_examples": ["CVE-2019-10164"],
+    "attack_vectors": ["SQL injection", "Weak authentication"],
+    "mitigation": "Firewall, strong passwords, pg_hba.conf"
+  },
+  "5555": {
+    "service": "ADB",
+    "risk": 8,
+    "category": "mobile",
+    "reason": "Android Debug Bridge, full device access",
+    "cve_examples": [],
+    "attack_vectors": ["Full device control", "Data exfiltration"],
+    "mitigation": "Never expose to network, use USB only"
+  },
+  "5601": {
+    "service": "Kibana",
+    "risk": 6,
+    "category": "monitoring",
+    "reason": "Kibana dashboard, information disclosure",
+    "cve_examples": ["CVE-2019-7609"],
+    "attack_vectors": ["Prototype pollution", "Unauthorized access"],
+    "mitigation": "Require authentication, use reverse proxy"
+  },
+  "5672": {
+    "service": "AMQP",
+    "risk": 5,
+    "category": "messaging",
+    "reason": "RabbitMQ/AMQP messaging",
+    "cve_examples": ["CVE-2018-11087"],
+    "attack_vectors": ["Message interception", "Queue manipulation"],
+    "mitigation": "Require authentication, use TLS"
+  },
+  "5900": {
+    "service": "VNC",
+    "risk": 9,
+    "category": "remote_access",
+    "reason": "Virtual Network Computing, often weak/no password",
+    "cve_examples": ["CVE-2019-15681"],
+    "attack_vectors": ["Weak passwords", "Screen capture", "Remote control"],
+    "mitigation": "Use strong passwords, SSH tunnel, or disable"
+  },
+  "6379": {
+    "service": "Redis",
+    "risk": 8,
+    "category": "database",
+    "reason": "Redis in-memory database, often no authentication",
+    "cve_examples": ["CVE-2015-8080"],
+    "attack_vectors": ["Unauthorized access", "RCE via config", "Data theft"],
+    "mitigation": "Require password, bind to localhost, disable dangerous commands"
+  },
+  "6443": {
+    "service": "Kubernetes",
+    "risk": 7,
+    "category": "container",
+    "reason": "Kubernetes API server",
+    "cve_examples": ["CVE-2018-1002105"],
+    "attack_vectors": ["Privilege escalation", "Cluster compromise"],
+    "mitigation": "Use RBAC, network policies, audit logging"
+  },
+  "7001": {
+    "service": "WebLogic",
+    "risk": 8,
+    "category": "application",
+    "reason": "Oracle WebLogic Server",
+    "cve_examples": ["CVE-2020-2883"],
+    "attack_vectors": ["Deserialization RCE", "Admin console access"],
+    "mitigation": "Apply patches, restrict admin access"
+  },
+  "8000": {
+    "service": "HTTP-Alt",
+    "risk": 4,
+    "category": "web",
+    "reason": "Alternative HTTP port, often development",
+    "cve_examples": [],
+    "attack_vectors": ["Exposed admin panels", "Debug endpoints"],
+    "mitigation": "Firewall, require authentication"
+  },
+  "8080": {
+    "service": "HTTP-Proxy",
+    "risk": 5,
+    "category": "web",
+    "reason": "HTTP proxy or alternative web port",
+    "cve_examples": [],
+    "attack_vectors": ["Admin interfaces", "Proxy abuse"],
+    "mitigation": "Require authentication, restrict access"
+  },
+  "8081": {
+    "service": "HTTP-Alt",
+    "risk": 4,
+    "category": "web",
+    "reason": "Alternative HTTP port",
+    "cve_examples": [],
+    "attack_vectors": ["Exposed services"],
+    "mitigation": "Firewall, authentication"
+  },
+  "8443": {
+    "service": "HTTPS-Alt",
+    "risk": 3,
+    "category": "web",
+    "reason": "Alternative HTTPS port",
+    "cve_examples": [],
+    "attack_vectors": ["Certificate issues"],
+    "mitigation": "Valid certificates, strong TLS"
+  },
+  "8545": {
+    "service": "Ethereum",
+    "risk": 8,
+    "category": "blockchain",
+    "reason": "Ethereum JSON-RPC, wallet access",
+    "cve_examples": [],
+    "attack_vectors": ["Unauthorized transactions", "Wallet theft"],
+    "mitigation": "Never expose to internet, use authentication"
+  },
+  "8883": {
+    "service": "MQTT-TLS",
+    "risk": 3,
+    "category": "iot",
+    "reason": "MQTT over TLS",
+    "cve_examples": [],
+    "attack_vectors": ["Weak TLS configuration"],
+    "mitigation": "Use client certificates, strong TLS"
+  },
+  "9000": {
+    "service": "PHP-FPM",
+    "risk": 7,
+    "category": "web",
+    "reason": "PHP FastCGI Process Manager",
+    "cve_examples": ["CVE-2019-11043"],
+    "attack_vectors": ["RCE via path confusion"],
+    "mitigation": "Never expose directly, use nginx/apache"
+  },
+  "9042": {
+    "service": "Cassandra",
+    "risk": 6,
+    "category": "database",
+    "reason": "Apache Cassandra CQL",
+    "cve_examples": [],
+    "attack_vectors": ["Unauthorized data access"],
+    "mitigation": "Require authentication, firewall"
+  },
+  "9090": {
+    "service": "Prometheus",
+    "risk": 5,
+    "category": "monitoring",
+    "reason": "Prometheus metrics, information disclosure",
+    "cve_examples": [],
+    "attack_vectors": ["Metrics scraping", "System information"],
+    "mitigation": "Restrict access, use authentication"
+  },
+  "9092": {
+    "service": "Kafka",
+    "risk": 6,
+    "category": "messaging",
+    "reason": "Apache Kafka broker",
+    "cve_examples": [],
+    "attack_vectors": ["Message interception", "Topic manipulation"],
+    "mitigation": "Use SASL authentication, TLS"
+  },
+  "9200": {
+    "service": "Elasticsearch",
+    "risk": 8,
+    "category": "database",
+    "reason": "Elasticsearch REST API, often no authentication",
+    "cve_examples": ["CVE-2015-1427"],
+    "attack_vectors": ["Data theft", "RCE via scripting", "Cluster manipulation"],
+    "mitigation": "Enable X-Pack security, firewall"
+  },
+  "9300": {
+    "service": "Elasticsearch-Transport",
+    "risk": 7,
+    "category": "database",
+    "reason": "Elasticsearch transport protocol",
+    "cve_examples": [],
+    "attack_vectors": ["Cluster joining", "Data access"],
+    "mitigation": "Firewall, cluster authentication"
+  },
+  "10000": {
+    "service": "Webmin",
+    "risk": 7,
+    "category": "admin",
+    "reason": "Webmin web-based admin panel",
+    "cve_examples": ["CVE-2019-15107"],
+    "attack_vectors": ["RCE", "Privilege escalation"],
+    "mitigation": "Keep updated, use strong passwords, 2FA"
+  },
+  "11211": {
+    "service": "Memcached",
+    "risk": 7,
+    "category": "caching",
+    "reason": "Memcached, no authentication, amplification attacks",
+    "cve_examples": ["CVE-2016-8704"],
+    "attack_vectors": ["DDoS amplification", "Data theft", "Cache poisoning"],
+    "mitigation": "Bind to localhost, use SASL authentication"
+  },
+  "27017": {
+    "service": "MongoDB",
+    "risk": 8,
+    "category": "database",
+    "reason": "MongoDB database, historically no authentication",
+    "cve_examples": ["CVE-2019-2386"],
+    "attack_vectors": ["Unauthorized data access", "Ransomware"],
+    "mitigation": "Enable authentication, bind to localhost, firewall"
+  },
+  "27018": {
+    "service": "MongoDB-Shard",
+    "risk": 7,
+    "category": "database",
+    "reason": "MongoDB shard server",
+    "cve_examples": [],
+    "attack_vectors": ["Cluster manipulation"],
+    "mitigation": "Enable authentication, firewall"
+  },
+  "50000": {
+    "service": "SAP",
+    "risk": 7,
+    "category": "erp",
+    "reason": "SAP application server",
+    "cve_examples": ["CVE-2020-6207"],
+    "attack_vectors": ["Unauthorized access", "Data theft"],
+    "mitigation": "Apply SAP security notes, restrict access"
+  },
+  "50070": {
+    "service": "Hadoop",
+    "risk": 6,
+    "category": "big_data",
+    "reason": "Hadoop NameNode web UI",
+    "cve_examples": [],
+    "attack_vectors": ["Information disclosure", "Cluster manipulation"],
+    "mitigation": "Enable Kerberos, restrict access"
+  }
+}

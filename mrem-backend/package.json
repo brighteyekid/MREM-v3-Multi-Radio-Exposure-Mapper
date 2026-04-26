@@ -1,0 +1,35 @@
+{
+    "name": "mrem-backend",
+    "version": "3.0.0",
+    "description": "Multi-Radio Exposure Mapper v3 — Backend Server",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "start:sudo": "sudo node server.js",
+        "dev": "nodemon --ignore data/ --ignore reports/ server.js",
+        "dev:sudo": "sudo nodemon --ignore data/ --ignore reports/ server.js",
+        "setup": "sudo bash scripts/setup-caps.sh",
+        "oui": "node scripts/generate-oui.js"
+    },
+    "dependencies": {
+        "@abandonware/noble": "^1.9.2-22",
+        "@google/genai": "^1.49.0",
+        "@serialport/parser-readline": "^12.0.0",
+        "axios": "^1.6.5",
+        "better-sqlite3": "^9.4.3",
+        "cors": "^2.8.5",
+        "express": "^4.18.2",
+        "node-wifi": "^2.0.16",
+        "puppeteer": "^21.7.0",
+        "serialport": "^12.0.0",
+        "systeminformation": "^5.22.0",
+        "uuid": "^9.0.0",
+        "ws": "^8.16.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.3"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    }
+}

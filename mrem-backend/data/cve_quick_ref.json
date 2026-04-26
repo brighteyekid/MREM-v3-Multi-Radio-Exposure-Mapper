@@ -1,0 +1,306 @@
+[
+    {
+        "service": "ssh",
+        "version_pattern": "OpenSSH 7.2",
+        "cve": "CVE-2016-6515",
+        "severity": "HIGH",
+        "score": 7,
+        "description": "OpenSSH 7.2p2 — remote DoS via crafted authentication packets"
+    },
+    {
+        "service": "ssh",
+        "version_pattern": "OpenSSH 7.4",
+        "cve": "CVE-2018-15473",
+        "severity": "MEDIUM",
+        "score": 5,
+        "description": "OpenSSH 7.4 — username enumeration via timing side-channel"
+    },
+    {
+        "service": "ssh",
+        "version_pattern": "OpenSSH 6",
+        "cve": "CVE-2014-1692",
+        "severity": "HIGH",
+        "score": 7,
+        "description": "OpenSSH <6.6 — GSSAPI memory corruption"
+    },
+    {
+        "service": "telnet",
+        "version_pattern": "",
+        "cve": "PROTOCOL",
+        "severity": "CRITICAL",
+        "score": 9,
+        "description": "Telnet transmits all data including credentials in plaintext"
+    },
+    {
+        "service": "ftp",
+        "version_pattern": "",
+        "cve": "PROTOCOL",
+        "severity": "HIGH",
+        "score": 7,
+        "description": "FTP transmits credentials in plaintext; anonymous access possible"
+    },
+    {
+        "service": "http",
+        "version_pattern": "Apache 2.2",
+        "cve": "CVE-2017-7679",
+        "severity": "CRITICAL",
+        "score": 9,
+        "description": "Apache 2.2.x — heap buffer overflow in mod_mime"
+    },
+    {
+        "service": "http",
+        "version_pattern": "Apache 2.4.49",
+        "cve": "CVE-2021-41773",
+        "severity": "CRITICAL",
+        "score": 10,
+        "description": "Apache 2.4.49 — path traversal and RCE (actively exploited in wild)"
+    },
+    {
+        "service": "http",
+        "version_pattern": "Apache 2.4.50",
+        "cve": "CVE-2021-42013",
+        "severity": "CRITICAL",
+        "score": 10,
+        "description": "Apache 2.4.50 — path traversal bypass (CVE-2021-41773 patch bypass)"
+    },
+    {
+        "service": "microsoft-ds",
+        "version_pattern": "SMB",
+        "cve": "CVE-2017-0144",
+        "severity": "CRITICAL",
+        "score": 10,
+        "description": "SMBv1 EternalBlue — remote code execution (WannaCry/NotPetya vector)"
+    },
+    {
+        "service": "netbios-ssn",
+        "version_pattern": "Samba 3",
+        "cve": "CVE-2017-7494",
+        "severity": "CRITICAL",
+        "score": 10,
+        "description": "Samba 3.x — SambaCry remote code execution"
+    },
+    {
+        "service": "mqtt",
+        "version_pattern": "",
+        "cve": "NOAUTH",
+        "severity": "HIGH",
+        "score": 8,
+        "description": "MQTT broker without authentication — allows message injection and subscription to all topics"
+    },
+    {
+        "service": "vnc",
+        "version_pattern": "",
+        "cve": "NOAUTH",
+        "severity": "CRITICAL",
+        "score": 9,
+        "description": "VNC accessible without authentication — full graphical remote access"
+    },
+    {
+        "service": "upnp",
+        "version_pattern": "",
+        "cve": "EXPOSURE",
+        "severity": "MEDIUM",
+        "score": 5,
+        "description": "UPnP exposed on network — may allow port mapping requests from untrusted clients"
+    },
+    {
+        "service": "http",
+        "version_pattern": "nginx 1.14",
+        "cve": "CVE-2019-20372",
+        "severity": "MEDIUM",
+        "score": 5,
+        "description": "nginx 1.14 — HTTP request smuggling via chunked transfer encoding"
+    },
+    {
+        "service": "http",
+        "version_pattern": "nginx 1.9",
+        "cve": "CVE-2016-0742",
+        "severity": "MEDIUM",
+        "score": 5,
+        "description": "nginx 1.9 — invalid pointer dereference in resolver"
+    },
+    {
+        "service": "rdp",
+        "version_pattern": "Windows",
+        "cve": "CVE-2019-0708",
+        "severity": "CRITICAL",
+        "score": 10,
+        "description": "BlueKeep — unauthenticated RCE in Remote Desktop Services via specially crafted pre-authentication requests"
+    },
+    {
+        "service": "http",
+        "version_pattern": "Tomcat",
+        "cve": "CVE-2020-1938",
+        "severity": "CRITICAL",
+        "score": 10,
+        "description": "Ghostcat — LFI and potential RCE via AJP connector on port 8009"
+    },
+    {
+        "service": "http",
+        "version_pattern": "Log4j",
+        "cve": "CVE-2021-44228",
+        "severity": "CRITICAL",
+        "score": 10,
+        "description": "Log4Shell — unauthenticated RCE via JNDI lookup injection in logging payload"
+    },
+    {
+        "service": "http",
+        "version_pattern": "Confluence",
+        "cve": "CVE-2022-26134",
+        "severity": "CRITICAL",
+        "score": 10,
+        "description": "Atlassian Confluence — OGNL injection vulnerability allowing unauthenticated RCE"
+    },
+    {
+        "service": "http",
+        "version_pattern": "React",
+        "cve": "React2Shell",
+        "severity": "CRITICAL",
+        "score": 9,
+        "description": "React2Shell — prototype pollution/DOM XSS escalating to RCE in specific unsafe component lifecycles or electron wrappers"
+    },
+    {
+        "service": "http",
+        "version_pattern": "Node.js",
+        "cve": "CVE-2017-14849",
+        "severity": "HIGH",
+        "score": 8,
+        "description": "Express.js <4.15.5 — directory traversal / LFI via static file server leading to source code disclosure"
+    },
+    {
+        "service": "redis",
+        "version_pattern": "",
+        "cve": "NOAUTH",
+        "severity": "CRITICAL",
+        "score": 10,
+        "description": "Redis without authentication — allows arbitrary file write leading to SSH key injection or cron-based RCE"
+    },
+    {
+        "service": "memcached",
+        "version_pattern": "",
+        "cve": "NOAUTH",
+        "severity": "HIGH",
+        "score": 8,
+        "description": "Memcached UDP/TCP without authentication — allows data leakage, manipulation, and use in amplification DDoS"
+    },
+    {
+        "service": "docker",
+        "version_pattern": "API",
+        "cve": "EXPOSURE",
+        "severity": "CRITICAL",
+        "score": 10,
+        "description": "Unauthenticated Docker TCP API (2375/2376) — allows container creation with root host mounts, leading to full host compromise"
+    },
+    {
+        "service": "kubernetes",
+        "version_pattern": "Kubelet",
+        "cve": "EXPOSURE",
+        "severity": "CRITICAL",
+        "score": 10,
+        "description": "Anonymous Kubelet API (10250) — allows unauthenticated pod execution and reading of container logs/secrets"
+    },
+    {
+        "service": "ftp",
+        "version_pattern": "ProFTPD 1.3.5",
+        "cve": "CVE-2015-3306",
+        "severity": "CRITICAL",
+        "score": 10,
+        "description": "ProFTPD 1.3.5 mod_copy — unauthenticated arbitrary file read/write allowing RCE via site cpfr/cpto"
+    },
+    {
+        "service": "ftp",
+        "version_pattern": "vsftpd 2.3.4",
+        "cve": "CVE-2011-2523",
+        "severity": "CRITICAL",
+        "score": 10,
+        "description": "vsftpd 2.3.4 — malicious backdoor triggering shell on port 6200 when username contains a smiley face ':)'"
+    },
+    {
+        "service": "smtp",
+        "version_pattern": "Exim 4",
+        "cve": "CVE-2019-10149",
+        "severity": "CRITICAL",
+        "score": 10,
+        "description": "The Return of the WIZard — Exim 4.87 to 4.91 unauthenticated RCE via recipient address manipulation"
+    },
+    {
+        "service": "https",
+        "version_pattern": "Exchange",
+        "cve": "CVE-2021-34473",
+        "severity": "CRITICAL",
+        "score": 10,
+        "description": "ProxyShell — Microsoft Exchange unauthenticated RCE via ACL bypass and arbitrary payload execution"
+    },
+    {
+        "service": "https",
+        "version_pattern": "Exchange",
+        "cve": "CVE-2021-26855",
+        "severity": "CRITICAL",
+        "score": 10,
+        "description": "ProxyLogon — Microsoft Exchange unauthenticated SSRF leading to RCE"
+    },
+    {
+        "service": "snmp",
+        "version_pattern": "v1/v2c",
+        "cve": "PROTOCOL",
+        "severity": "HIGH",
+        "score": 7,
+        "description": "SNMP using default 'public' or 'private' community strings — allows extensive information disclosure and potential configuration changes"
+    },
+    {
+        "service": "dns",
+        "version_pattern": "",
+        "cve": "EXPOSURE",
+        "severity": "MEDIUM",
+        "score": 6,
+        "description": "DNS Zone Transfer (AXFR) exposed — allows retrieval of entire DNS namespace mapping"
+    },
+    {
+        "service": "http",
+        "version_pattern": "Jenkins",
+        "cve": "CVE-2024-23897",
+        "severity": "CRITICAL",
+        "score": 9,
+        "description": "Jenkins CLI — arbitrary file read leading to RCE via args4j parsing weakness"
+    },
+    {
+        "service": "http",
+        "version_pattern": "GitLab",
+        "cve": "CVE-2021-22205",
+        "severity": "CRITICAL",
+        "score": 10,
+        "description": "GitLab — unauthenticated RCE via ExifTool image parsing vulnerability"
+    },
+    {
+        "service": "http",
+        "version_pattern": "WebLogic",
+        "cve": "CVE-2020-14882",
+        "severity": "CRITICAL",
+        "score": 10,
+        "description": "Oracle WebLogic Server — unauthenticated RCE via administrative console path traversal"
+    },
+    {
+        "service": "elasticsearch",
+        "version_pattern": "1.2",
+        "cve": "CVE-2014-3120",
+        "severity": "CRITICAL",
+        "score": 10,
+        "description": "Elasticsearch <1.2.0 — unauthenticated dynamic script execution (MVEL) leading to RCE"
+    },
+    {
+        "service": "mongodb",
+        "version_pattern": "",
+        "cve": "NOAUTH",
+        "severity": "HIGH",
+        "score": 8,
+        "description": "MongoDB without authentication — allows full database dump, modification, and potential OS command execution depending on version"
+    },
+    {
+        "service": "rsync",
+        "version_pattern": "",
+        "cve": "EXPOSURE",
+        "severity": "HIGH",
+        "score": 7,
+        "description": "Unauthenticated Rsync module — allows anonymous reading or writing of files to the filesystem"
+    }
+]
